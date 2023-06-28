@@ -10,3 +10,40 @@ block page
                     h1.intro__title Полет Илона Маска #[br]и DOGIE COIN
                     p.intro__text В прошлый четверг все офигели от полета DOGIE COIN на марс.
                     +button_brown('ОСТАВИТЬ ЗАЯВКУ', 'intro__button')
+
+    section.cards
+        .container
+            h2.cards__title Карточки
+            .cards__wrapper
+
+                - 
+                    const cardsData = [
+                        {cardName: 'bridge', imgUrl: '1'},
+                        {cardName: 'Water', imgUrl: '2'},
+                        {cardName: 'bridge', imgUrl: '3'},
+                        {cardName: 'bridge', imgUrl: '4'},
+                        {cardName: 'bridge', imgUrl: '5'},
+                        {cardName: 'forest', imgUrl: '6'},
+                        {cardName: '', imgUrl: '7'},
+                        {cardName: 'nature', imgUrl: '8'},
+                        {cardName: 'nature', imgUrl: '9'},
+                        {cardName: 'nature', imgUrl: '10'},
+                    ]
+
+                each item in cardsData
+                    +card(item.cardName, item.imgUrl)
+
+                //- .cards__item.card
+                //-     .card__picture
+                //-         img(src="" alt="")
+
+                //-     .card__descr
+                //-         h3.card__heading bridge
+                //-         p.card__subheading How to increase your productivity with a Music
+                //-         p.card__text Sed ut perspiciatis unde omnis iste natus error sit voluptatem santium doloremque laudantium, totam rem sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolo…
+                //-         p.card__info Posted by #[b.card__author Eugenia], on #[span.card__date July  24, 2019]
+
+                //-         a.card__continue(href="#") Continue reading
+
+            +button_brown('ЗАГРУЗИТЬ ЕЩЕ', 'cards__more')
+
