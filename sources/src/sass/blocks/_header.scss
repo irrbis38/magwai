@@ -9,6 +9,25 @@
   @include xxs {
     padding: 15px 0 18px;
   }
+
+  &.hide {
+    transform: translateY(-100%);
+  }
+
+  &.hide.fixed {
+    transform: translateY(-100%);
+  }
+
+  &.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 5;
+    background-color: var(--color_dark_bg);
+    transition: var(--transition);
+    transform: translateY(0);
+  }
 }
 
 .header__wrapper {

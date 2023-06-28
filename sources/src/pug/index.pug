@@ -9,7 +9,7 @@ block page
                 .intro__wrapper
                     h1.intro__title Полет Илона Маска #[br]и DOGIE COIN
                     p.intro__text В прошлый четверг все офигели от полета DOGIE COIN на марс.
-                    +button_brown('ОСТАВИТЬ ЗАЯВКУ', 'intro__button')
+                    +button_brown('ОСТАВИТЬ ЗАЯВКУ', 'intro__button request__btn')
 
     section.cards
         .container
@@ -33,17 +33,29 @@ block page
                 each item in cardsData
                     +card(item.cardName, item.imgUrl)
 
-                //- .cards__item.card
-                //-     .card__picture
-                //-         img(src="" alt="")
-
-                //-     .card__descr
-                //-         h3.card__heading bridge
-                //-         p.card__subheading How to increase your productivity with a Music
-                //-         p.card__text Sed ut perspiciatis unde omnis iste natus error sit voluptatem santium doloremque laudantium, totam rem sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolo…
-                //-         p.card__info Posted by #[b.card__author Eugenia], on #[span.card__date July  24, 2019]
-
-                //-         a.card__continue(href="#") Continue reading
 
             +button_brown('ЗАГРУЗИТЬ ЕЩЕ', 'cards__more')
+
+    section.popup
+        .popup__overlay
+        .popup__wrapper
+
+            button.popup__close(type="button" aria-label='Закрыть')
+                svg(width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg")
+                    path(d="M1.5 1.57617L22.5 22.5762M22.5 1.57617L1.5 22.5762" stroke="#131313" stroke-width="2")
+
+            h2.popup__title Вы можете оставить заявку
+
+            form.popup__form(action="#" novalidate)
+                p.popup__error Заполните все обязательные для заполнения поля.
+
+                .popup__item
+                    input.popup__input(type="text" placeholder="Имя*" name="name" autocomplete="off" required)
+                    span.popup__line
+
+                .popup__item
+                    input.popup__input(type="text" placeholder="Телефон*" name="phone" minlength="9" autocomplete="off" required)
+                    span.popup__line
+
+                button.popup__button(type="submit" aria-label='Отправить форму') Отправить
 
