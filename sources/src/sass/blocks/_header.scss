@@ -119,6 +119,7 @@
     height: calc(100% - 116px);
     background-color: var(--color_dark_bg);
     overflow: hidden;
+    transition: var(--transition);
     // background-color: red;
 
     &.active {

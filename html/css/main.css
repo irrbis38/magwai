@@ -437,7 +437,8 @@ input {
     width: 100%;
     height: calc(100% - 116px);
     background-color: var(--color_dark_bg);
-    overflow: hidden
+    overflow: hidden;
+    transition: var(--transition)
   }
   .header__menu.active {
     -webkit-transform: translateX(100%);
