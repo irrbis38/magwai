@@ -1,0 +1,95 @@
+.intro {
+  height: 100vh;
+  min-height: 700px;
+  padding-top: 116px;
+
+  @include xxs {
+    min-height: 500px;
+  }
+}
+
+.intro__container {
+  height: 100%;
+  background: url("../images/intro/intro-bg-1920.png") center / cover no-repeat;
+  border-radius: 60px 60px 0 0;
+  overflow: hidden;
+
+  & .container {
+    height: 100%;
+  }
+
+  @include xs {
+    border-radius: 30px 30px 0 0;
+  }
+}
+
+.intro__wrapper {
+  height: 100%;
+  max-width: 686px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: 158px 0 96px;
+
+  @include sm {
+    padding: 124px 8px 76px;
+  }
+
+  @include xxs {
+    padding: 52px 0;
+  }
+}
+
+.intro__title {
+  margin-bottom: 40px;
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 121%;
+  text-transform: uppercase;
+
+  @include sm {
+    font-size: 38px;
+  }
+
+  @include xxs {
+    margin-bottom: 20px;
+    font-size: 20px;
+  }
+}
+
+.intro__text {
+  margin-bottom: 40px;
+  font-size: 16px;
+  line-height: 150%;
+  font-weight: 400;
+
+  @include sm {
+    max-width: 447px;
+    line-height: 24px;
+  }
+
+  @include xxs {
+    max-width: 293px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    line-height: 21px;
+  }
+}
+
+.intro__button.request__button {
+  position: relative;
+  left: 0;
+  padding: 10px 78px;
+
+  @include xxs {
+    left: -4px;
+    min-height: 47px;
+    padding: 10px 48px;
+
+    .request__bg,
+    .request__line {
+      min-height: 47px;
+    }
+  }
+}

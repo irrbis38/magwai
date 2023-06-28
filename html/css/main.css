@@ -307,6 +307,11 @@ input {
   outline-offset: 0
 }
 .header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
   padding: 28px 0
 }
 @media (max-width:575px) {
@@ -650,5 +655,110 @@ input {
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
   flex-grow: 1
+}
+.intro {
+  height: 100vh;
+  min-height: 700px;
+  padding-top: 116px
+}
+@media (max-width:575px) {
+  .intro {
+    min-height: 500px
+  }
+}
+.intro__container {
+  height: 100%;
+  background: url(../images/intro/intro-bg-1920.png) center/cover no-repeat;
+  border-radius: 60px 60px 0 0;
+  overflow: hidden
+}
+.intro__container .container {
+  height: 100%
+}
+@media (max-width:767px) {
+  .intro__container {
+    border-radius: 30px 30px 0 0
+  }
+}
+.intro__wrapper {
+  height: 100%;
+  max-width: 686px;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  padding: 158px 0 96px
+}
+@media (max-width:1023px) {
+  .intro__wrapper {
+    padding: 124px 8px 76px
+  }
+}
+@media (max-width:575px) {
+  .intro__wrapper {
+    padding: 52px 0
+  }
+}
+.intro__title {
+  margin-bottom: 40px;
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 121%;
+  text-transform: uppercase
+}
+@media (max-width:1023px) {
+  .intro__title {
+    font-size: 38px
+  }
+}
+@media (max-width:575px) {
+  .intro__title {
+    margin-bottom: 20px;
+    font-size: 20px
+  }
+}
+.intro__text {
+  margin-bottom: 40px;
+  font-size: 16px;
+  line-height: 150%;
+  font-weight: 400
+}
+@media (max-width:1023px) {
+  .intro__text {
+    max-width: 447px;
+    line-height: 24px
+  }
+}
+@media (max-width:575px) {
+  .intro__text {
+    max-width: 293px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    line-height: 21px
+  }
+}
+.intro__button.request__button {
+  position: relative;
+  left: 0;
+  padding: 10px 78px
+}
+@media (max-width:575px) {
+  .intro__button.request__button {
+    left: -4px;
+    min-height: 47px;
+    padding: 10px 48px
+  }
+  .intro__button.request__button .request__bg,
+  .intro__button.request__button .request__line {
+    min-height: 47px
+  }
 }
 /*# sourceMappingURL=maps/main.css.map */
