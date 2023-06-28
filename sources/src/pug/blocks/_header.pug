@@ -1,8 +1,13 @@
 header.header
     .container
         .header__wrapper
-            .header__logo
-                img(src="./images/logo.svg" alt="logo")
+
+            .header__panel
+
+                .header__burger: span
+
+                img.header__logo(src="./images/logo.svg" alt="logo")
+
             nav.header__menu
                 ul.header__list
                     li: a(href="#") УСЛУГИ
@@ -12,7 +17,19 @@ header.header
                     li: a(href="#") АКЦИИ
                     li: a(href="#") FAQ
                     li: a(href="#") КОНТАКТЫ
-            a.header__phone(href="#")
-                span
-                include ./_icon_phone
-            +button_brown('ОСТАВИТЬ ЗАЯВКУ', 'header__button')
+
+                .header__feedback
+
+                    a.header__phone(href="#")
+                        span
+                        include ./_icon_phone
+
+                    +button_brown('ОСТАВИТЬ ЗАЯВКУ', 'header__button')
+
+            .header__buttons
+
+                a.header__phone(href="#")
+                    span
+                    include ./_icon_phone
+
+                +button_brown('ОСТАВИТЬ ЗАЯВКУ', 'header__button')
