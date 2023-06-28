@@ -1,2 +1,18 @@
 header.header
-    .container Header
+    .container
+        .header__wrapper
+            .header__logo
+                img(src="./images/logo.svg" alt="logo")
+            nav.header__menu
+                ul.header__list
+                    li: a(href="#") УСЛУГИ
+                    li: a(href="#") АБОНЕМЕНТЫ
+                    li: a(href="#") ПОЧЕМУ МЫ
+                    li: a(href="#") ОБОРУДОВАНИЕ
+                    li: a(href="#") АКЦИИ
+                    li: a(href="#") FAQ
+                    li: a(href="#") КОНТАКТЫ
+            a.header__phone(href="#")
+                span
+                include ./_icon_phone
+            +button_brown('ОСТАВИТЬ ЗАЯВКУ', 'header__button')

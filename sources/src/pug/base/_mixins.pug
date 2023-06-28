@@ -38,19 +38,21 @@ mixin pagination(amount, current, ellipsis, last, arrows)
 
         ul.pagination__list
             - for (var index = 1; index <= amount; index++)
-                    if (index === current)
-                        li.pagination__item.current
-                            span= index
-                    else if (index === ellipsis)
-                        li.pagination__item
-                            a(href="#").is-collapsed ...
-                    else
-                        li.pagination__item
-                            a(href="#")= index
-
-            - for (var index = last; index <= last; index++)
+                if (index === current)
+                    li.pagination__item.current
+                        span= index
+                else if (index === ellipsis)
+                    li.pagination__item
+                        a(href="#").is-collapsed ...
+                else
                     li.pagination__item
                         a(href="#")= index
 
+            - for (var index = last; index <= last; index++)
+                li.pagination__item
+                    a(href="#")= index
+
         if (arrows === true)
             a(href="#").pagination__next: span
+
+include ./../blocks/_button_brown
