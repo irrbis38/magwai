@@ -16,6 +16,7 @@
     font-weight: 700;
     line-height: 150%;
     white-space: nowrap;
+    transition: color 0.2s ease-out;
   }
 
   .request__bg {
@@ -26,6 +27,7 @@
     min-height: 60px;
     background-color: var(--color_brown);
     transform: skewX(-17deg);
+    transition: box-shadow 0.2s ease-out;
   }
 
   .request__line {
@@ -36,5 +38,19 @@
     min-height: 60px;
     background-color: var(--color_white);
     transform: skewX(-17deg);
+    transition: box-shadow 0.2s ease-out;
+  }
+
+  &:hover {
+    .request__text {
+      color: #737f96;
+    }
+    .request__bg {
+      box-shadow: inset 100vw 0 0 0 #e1cda8, 0 0 20px 2px var(--color_brown);
+    }
+
+    .request__line {
+      box-shadow: 0 0 20px 2px var(--color_white);
+    }
   }
 }

@@ -6,25 +6,32 @@ header.header
 
                 .header__burger: span
 
-                img.header__logo(src="./images/logo.svg" alt="logo")
+                a.header__logo(href="#")
+                    img(src="./images/logo.svg" alt="logo")
 
             nav.header__menu
-                ul.header__list
-                    li: a(href="#") УСЛУГИ
-                    li: a(href="#") АБОНЕМЕНТЫ
-                    li: a(href="#") ПОЧЕМУ МЫ
-                    li: a(href="#") ОБОРУДОВАНИЕ
-                    li: a(href="#") АКЦИИ
-                    li: a(href="#") FAQ
-                    li: a(href="#") КОНТАКТЫ
+                .header__menu-wrapper
+                    ul.header__list
+                        -
+                            const menuList = [
+                                "УСЛУГИ",
+                                "АБОНЕМЕНТЫ",
+                                "ПОЧЕМУ МЫ",
+                                "ОБОРУДОВАНИЕ",
+                                "АКЦИИ",
+                                "FAQ",
+                                "КОНТАКТЫ"
+                            ]
+                        each item in menuList
+                            li: a(href="#" data-text= item)= item
 
-                .header__feedback
+                    .header__feedback
 
-                    a.header__phone(href="#")
-                        span
-                        include ./_icon_phone
+                        a.header__phone(href="#")
+                            span
+                            include ./_icon_phone
 
-                    +button_brown('ОСТАВИТЬ ЗАЯВКУ', 'header__button')
+                        +button_brown('ОСТАВИТЬ ЗАЯВКУ', 'header__button')
 
             .header__buttons
 
