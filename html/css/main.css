@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .request__button {
   position: relative;
   left: -10px;
@@ -887,9 +888,6 @@ input {
   padding: 25px 24px 30px
 }
 .card__intro {
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -898,7 +896,8 @@ input {
   flex-direction: column;
   -webkit-justify-content: flex-end;
   -ms-flex-pack: end;
-  justify-content: flex-end
+  justify-content: flex-end;
+  justify-self: flex-start
 }
 .card__heading {
   margin-bottom: 20px;
@@ -910,6 +909,9 @@ input {
   letter-spacing: 1.5px;
   text-transform: uppercase
 }
+.card__heading::after {
+  content: " "
+}
 .card__subheading {
   max-width: 252px;
   margin-bottom: 20px;
@@ -918,6 +920,9 @@ input {
   line-height: 26px
 }
 .card__text {
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
   margin-bottom: 20px;
   color: var(--color_grey);
   font-size: 14px;
@@ -952,6 +957,22 @@ input {
   margin: 0 auto;
   left: -7px;
   padding: 10px 88px
+}
+.cards__more.disabled {
+  cursor: default;
+  opacity: .7
+}
+.cards__more.disabled .request__bg {
+  background-color: #777
+}
+.cards__more.disabled:hover .request__text {
+  color: var(--color_white)
+}
+.cards__more.disabled:hover .request__bg {
+  box-shadow: none
+}
+.cards__more.disabled:hover .request__line {
+  box-shadow: none
 }
 .popup {
   position: fixed;

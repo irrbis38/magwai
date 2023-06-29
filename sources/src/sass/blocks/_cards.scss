@@ -85,10 +85,11 @@
 }
 
 .card__intro {
-  flex-grow: 1;
+  // flex-grow: 1;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  justify-self: flex-start;
 }
 
 .card__heading {
@@ -100,6 +101,10 @@
   line-height: 26px;
   letter-spacing: 1.5px;
   text-transform: uppercase;
+
+  &::after {
+    content: "\a0";
+  }
 }
 
 .card__subheading {
@@ -111,6 +116,7 @@
 }
 
 .card__text {
+  flex-grow: 1;
   margin-bottom: 20px;
   color: var(--color_grey);
   font-size: 14px;
@@ -143,4 +149,26 @@
   margin: 0 auto;
   left: -7px;
   padding: 10px 88px;
+
+  &.disabled {
+    cursor: default;
+    opacity: 0.7;
+
+    .request__bg {
+      background-color: #777;
+    }
+
+    &:hover {
+      .request__text {
+        color: var(--color_white);
+      }
+      .request__bg {
+        box-shadow: none;
+      }
+
+      .request__line {
+        box-shadow: none;
+      }
+    }
+  }
 }

@@ -115,6 +115,69 @@ function showError(input) {
   }
 }
 
+// === CARDS
+
+// create card
+
+function createCard(post) {
+  let num = post.id % 10 === 0 ? 1 : post.id % 10;
+  const card = document.createElement("DIV");
+  card.classList.add("cards__item", "card");
+  card.innerHTML = `
+  <div class="card__picture"><img src="./images/cards/card-${num}.png" alt=""/></div>
+  <div class="card__descr">
+    <div class="card__intro">
+      <h3 class="card__heading">nature</h3>
+      <p class="card__subheading">How to increase your productivity with a Music</p>
+    </div>
+    <p class="card__text">${post.body}</p>
+    <div class="card__additional">
+      <p class="card__info">Posted by <b class="card__author">Eugenia</b>, on <span class="card__date">July  24, 2019</span></p><a class="card__continue" href="#">Continue reading</a>
+    </div>
+  </div>
+  `;
+
+  return card;
+}
+
+let postsData = [];
+let counter = 1;
+const cardsWrapper = document.querySelector(".cards__wrapper");
+
+function renderCards(postsData, container) {
+  if (counter < 21) {
+    const cards = document.createDocumentFragment();
+
+    let max = counter + 5;
+
+    while (counter < max) {
+      const card = createCard(postsData[counter]);
+      cards.append(card);
+      counter += 1;
+    }
+
+    container.append(cards);
+
+    if (counter >= 21) {
+      const cardsMoreBtn = document.querySelector(".cards__more");
+      cardsMoreBtn.classList.add("disabled");
+    }
+  }
+}
+
+function loadMoreHandler() {
+  if (postsData.length === 0) {
+    fetch("https://jsonplaceholder.typicode.com/posts")
+      .then((response) => response.json())
+      .then((json) => {
+        postsData = [postsData].concat(json);
+        renderCards(postsData, cardsWrapper);
+      });
+  } else {
+    renderCards(postsData, cardsWrapper);
+  }
+}
+
 //============ ADD LOGIC BY CONTENT LOAD EVENt ============
 
 document.addEventListener("DOMContentLoaded", function (event) {
@@ -195,4 +258,12 @@ document.addEventListener("DOMContentLoaded", function (event) {
     lazy: false,
   };
   const mask = new IMask(phoneInput, maskOptions);
+
+  // LOAD MORE CARDS
+
+  const cardsMoreBtn = document.querySelector(".cards__more");
+
+  cardsMoreBtn.addEventListener("click", () => {
+    loadMoreHandler();
+  });
 });
