@@ -222,12 +222,13 @@
           </button>
           <h2 class="popup__title">Вы можете оставить заявку</h2>
           <form class="popup__form" action="#" novalidate>
-            <p class="popup__error" aria-live="polite"> </p>
             <div class="popup__item">
-              <input class="popup__input" type="text" placeholder="Имя*" name="name" autocomplete="off" minlength="3" required><span class="popup__line"></span>
+              <p class="popup__error" aria-live="polite"></p>
+              <input class="popup__input" type="text" placeholder="Name*" name="name" autocomplete="off" minlength="3" required><span class="popup__line"></span>
             </div>
             <div class="popup__item">
-              <input class="popup__input" id="phoneInput" type="text" placeholder="Телефон*" name="phone" minlength="9" autocomplete="off" required><span class="popup__line"></span>
+              <p class="popup__error" aria-live="polite"></p>
+              <input class="popup__input" id="phoneInput" type="text" placeholder="+7(000)000-00-00" name="phone" minlength="16" autocomplete="off" required><span class="popup__line"></span>
             </div>
             <button class="popup__button" type="submit" aria-label="Отправить форму">Отправить</button>
           </form>

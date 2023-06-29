@@ -995,7 +995,13 @@ input {
   box-shadow: 0 0 20px 2px var(--color_brown);
   border-radius: 30px;
   background-color: var(--color_white);
-  overflow: auto
+  overflow: auto;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column
 }
 @media (max-width:1279px) {
   .popup__wrapper {
@@ -1030,7 +1036,7 @@ input {
   cursor: pointer
 }
 .popup__title {
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   font-size: 32px;
   color: var(--color_black)
 }
@@ -1045,21 +1051,32 @@ input {
   }
 }
 .popup__form {
-  position: relative;
-  padding-top: 30px
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between
 }
 .popup__error {
   display: none;
   position: absolute;
   left: 0;
-  top: 5px;
-  font-size: 14px;
+  top: -15px;
+  font-size: 12px;
   color: red
 }
 .popup__error.active {
   display: block
 }
 .popup__item {
+  position: relative;
   margin-bottom: 30px
 }
 .popup__item:nth-child(3) {

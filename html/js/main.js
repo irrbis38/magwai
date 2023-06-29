@@ -92,56 +92,29 @@ function addFixedClassToHeader() {
 // form validation
 
 const form = document.querySelector(".popup__form");
-const errorMessage = document.querySelector(".popup__error");
 const inputs = Array.from(document.querySelectorAll(".popup__input"));
 
 function showError(input) {
-  console.log(input.name);
-
   if (input.name === "name") {
     if (input.validity.valueMissing) {
       input.nextElementSibling.classList.add("error");
-      errorMessage.textContent = "Fill in all the required fields.";
+      const errorMessage = input.previousElementSibling;
+      errorMessage.textContent = "Fill in the 'name' fild.";
+      errorMessage.classList.add("active");
     } else if (input.validity.tooShort) {
       input.nextElementSibling.classList.add("error");
+      const errorMessage = input.previousElementSibling;
       errorMessage.textContent = `Name should be at least ${input.minLength} characters; you entered ${input.value.length}.`;
+      errorMessage.classList.add("active");
     }
   } else if (input.name === "phone") {
-    if (input.validity.valueMissing) {
+    if (input.value.includes("_")) {
       input.nextElementSibling.classList.add("error");
-      errorMessage.textContent = "Fill in all the required fields.";
+      const errorMessage = input.previousElementSibling;
+      errorMessage.textContent = "Type correct phone number.";
+      errorMessage.classList.add("active");
     }
   }
-
-  // show error message
-  errorMessage.className = "popup__error active";
-}
-
-// phone input mask
-
-function addPhoneMask(e) {
-  const el = e.target,
-    clearVal = el.dataset.phoneClear,
-    pattern = el.dataset.phonePattern,
-    matrix_def = "+7(___) ___-__-__",
-    matrix = pattern ? pattern : matrix_def,
-    i = 0,
-    def = matrix.replace(/\D/g, ""),
-    val = e.target.value.replace(/\D/g, "");
-  if (clearVal !== "false" && e.type === "blur") {
-    if (val.length < matrix.match(/([\_\d])/g).length) {
-      e.target.value = "";
-      return;
-    }
-  }
-  if (def.length >= val.length) val = def;
-  e.target.value = matrix.replace(/./g, function (a) {
-    return /[_\d]/.test(a) && i < val.length
-      ? val.charAt(i++)
-      : i >= val.length
-      ? ""
-      : a;
-  });
 }
 
 //============ ADD LOGIC BY CONTENT LOAD EVENt ============
@@ -184,7 +157,13 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
   inputs.forEach((input) =>
     input.addEventListener("input", () => {
-      if (input.validity.valid) {
+      if (input.name === "name" && input.validity.valid) {
+        const errorMessage = input.previousElementSibling;
+        errorMessage.textContent = "";
+        errorMessage.className = "popup__error";
+        input.nextElementSibling.classList.remove("error");
+      } else if (input.name === "phone" && !input.value.includes("_")) {
+        const errorMessage = input.previousElementSibling;
         errorMessage.textContent = "";
         errorMessage.className = "popup__error";
         input.nextElementSibling.classList.remove("error");
@@ -196,7 +175,12 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
   form.addEventListener("submit", function (event) {
     inputs.forEach((input) => {
-      if (!input.validity.valid) {
+      if (input.name === "name") {
+        if (!input.validity.valid) {
+          event.preventDefault();
+          showError(input);
+        }
+      } else if (input.name === "phone" && input.value.includes("_")) {
         event.preventDefault();
         showError(input);
       }
@@ -207,7 +191,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
   const phoneInput = document.getElementById("phoneInput");
 
-  for (let event of ["input", "blur", "focus"]) {
-    phoneInput.addEventListener(event, addPhoneMask);
-  }
+  const maskOptions = {
+    mask: "+{7}(000)000-00-00",
+    lazy: false,
+  };
+  const mask = new IMask(phoneInput, maskOptions);
 });
