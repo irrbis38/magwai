@@ -360,6 +360,8 @@ input {
   }
 }
 .header__panel {
+  position: relative;
+  z-index: 11;
   -webkit-flex-grow: 0;
   -ms-flex-positive: 0;
   flex-grow: 0;
@@ -456,10 +458,12 @@ input {
 @media (max-width:1599px) {
   .header__menu {
     position: fixed;
-    top: 116px;
+    top: 0;
     left: -100%;
+    z-index: 10;
     width: 100%;
-    height: calc(100% - 116px);
+    height: 100vh;
+    padding-top: 116px;
     background-color: var(--color_dark_bg);
     overflow: hidden;
     transition: var(--transition)
@@ -471,8 +475,7 @@ input {
 }
 @media (max-width:575px) {
   .header__menu {
-    top: 71px;
-    height: calc(100% - 71px)
+    padding-top: 71px
   }
 }
 @media (max-width:1599px) {
@@ -607,6 +610,8 @@ input {
   }
 }
 .header__buttons {
+  position: relative;
+  z-index: 11;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -856,10 +861,12 @@ input {
   background-color: var(--color_white)
 }
 .card__picture {
-  height: 185px
+  height: 185px;
+  overflow: hidden
 }
 .card__picture img {
-  width: 100%;
+  display: block;
+  width: 101%;
   height: 100%;
   -o-object-fit: cover;
   object-fit: cover

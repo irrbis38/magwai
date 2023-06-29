@@ -65,9 +65,11 @@
 
 .card__picture {
   height: 185px;
+  overflow: hidden;
 
   img {
-    width: 100%;
+    display: block;
+    width: 101%;
     height: 100%;
     object-fit: cover;
   }

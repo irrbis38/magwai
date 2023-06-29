@@ -45,6 +45,8 @@
 }
 
 .header__panel {
+  position: relative;
+  z-index: 11;
   flex-grow: 0;
   flex-shrink: 0;
   display: flex;
@@ -72,11 +74,6 @@
   @include lg {
     display: block;
   }
-
-  // @include xxs {
-  //   position: relative;
-  //   left: 3px;
-  // }
 
   span,
   &::before,
@@ -137,14 +134,17 @@
 
   @include lg {
     position: fixed;
-    top: 116px;
+    // top: 116px;
+    top: 0;
     left: -100%;
+    z-index: 10;
     width: 100%;
-    height: calc(100% - 116px);
+    // height: calc(100% - 116px);
+    height: 100vh;
+    padding-top: 116px;
     background-color: var(--color_dark_bg);
     overflow: hidden;
     transition: var(--transition);
-    // background-color: red;
 
     &.active {
       transform: translateX(100%);
@@ -152,8 +152,9 @@
   }
 
   @include xxs {
-    top: 71px;
-    height: calc(100% - 71px);
+    // top: 71px;
+    padding-top: 71px;
+    // height: calc(100% - 71px);
   }
 }
 
@@ -304,6 +305,8 @@
 }
 
 .header__buttons {
+  position: relative;
+  z-index: 11;
   display: flex;
   align-items: center;
   gap: 34px;
