@@ -44,12 +44,7 @@ function toggleHeader(itemsToRemoveClassActive) {
 
   const header = document.querySelector(".header");
 
-  let checkScroll = function () {
-    /*
-     ** Find the direction of scroll
-     ** 0 - initial, 1 - up, 2 - down
-     */
-
+  function checkScroll() {
     curScroll = window.scrollY || document.documentElement.scrollTop;
     if (curScroll > prevScroll) {
       //scrolled up
@@ -64,15 +59,12 @@ function toggleHeader(itemsToRemoveClassActive) {
     }
 
     prevScroll = curScroll;
-  };
+  }
 
   var toggleHeader = function (direction, curScroll) {
     if (direction === 2 && curScroll > 100) {
       header.classList.add("hide");
       prevDirection = direction;
-      // itemsToRemoveClassActive.forEach((item) =>
-      //     item.classList.remove("active")
-      // );
     } else if (direction === 1) {
       header.classList.remove("hide");
       prevDirection = direction;
@@ -88,8 +80,6 @@ function addFixedClassToHeader() {
 
   let startHeight = header.offsetHeight + 300;
 
-  console.log(startHeight);
-
   window.addEventListener("scroll", function () {
     if (this.scrollY > startHeight) {
       header.classList.add("fixed");
@@ -99,7 +89,62 @@ function addFixedClassToHeader() {
   });
 }
 
-// MAIN
+// form validation
+
+const form = document.querySelector(".popup__form");
+const errorMessage = document.querySelector(".popup__error");
+const inputs = Array.from(document.querySelectorAll(".popup__input"));
+
+function showError(input) {
+  console.log(input.name);
+
+  if (input.name === "name") {
+    if (input.validity.valueMissing) {
+      input.nextElementSibling.classList.add("error");
+      errorMessage.textContent = "Fill in all the required fields.";
+    } else if (input.validity.tooShort) {
+      input.nextElementSibling.classList.add("error");
+      errorMessage.textContent = `Name should be at least ${input.minLength} characters; you entered ${input.value.length}.`;
+    }
+  } else if (input.name === "phone") {
+    if (input.validity.valueMissing) {
+      input.nextElementSibling.classList.add("error");
+      errorMessage.textContent = "Fill in all the required fields.";
+    }
+  }
+
+  // show error message
+  errorMessage.className = "popup__error active";
+}
+
+// phone input mask
+
+function addPhoneMask(e) {
+  const el = e.target,
+    clearVal = el.dataset.phoneClear,
+    pattern = el.dataset.phonePattern,
+    matrix_def = "+7(___) ___-__-__",
+    matrix = pattern ? pattern : matrix_def,
+    i = 0,
+    def = matrix.replace(/\D/g, ""),
+    val = e.target.value.replace(/\D/g, "");
+  if (clearVal !== "false" && e.type === "blur") {
+    if (val.length < matrix.match(/([\_\d])/g).length) {
+      e.target.value = "";
+      return;
+    }
+  }
+  if (def.length >= val.length) val = def;
+  e.target.value = matrix.replace(/./g, function (a) {
+    return /[_\d]/.test(a) && i < val.length
+      ? val.charAt(i++)
+      : i >= val.length
+      ? ""
+      : a;
+  });
+}
+
+//============ ADD LOGIC BY CONTENT LOAD EVENt ============
 
 document.addEventListener("DOMContentLoaded", function (event) {
   // burger menu
@@ -134,4 +179,35 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
   // init toggle header to class 'fixed'
   addFixedClassToHeader();
+
+  // VALIDATION
+
+  inputs.forEach((input) =>
+    input.addEventListener("input", () => {
+      if (input.validity.valid) {
+        errorMessage.textContent = "";
+        errorMessage.className = "popup__error";
+        input.nextElementSibling.classList.remove("error");
+      } else {
+        showError(input);
+      }
+    })
+  );
+
+  form.addEventListener("submit", function (event) {
+    inputs.forEach((input) => {
+      if (!input.validity.valid) {
+        event.preventDefault();
+        showError(input);
+      }
+    });
+  });
+
+  // ADD PHONE MASK LISTENER
+
+  const phoneInput = document.getElementById("phoneInput");
+
+  for (let event of ["input", "blur", "focus"]) {
+    phoneInput.addEventListener(event, addPhoneMask);
+  }
 });

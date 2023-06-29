@@ -47,14 +47,14 @@ block page
             h2.popup__title Вы можете оставить заявку
 
             form.popup__form(action="#" novalidate)
-                p.popup__error Заполните все обязательные для заполнения поля.
+                p.popup__error(aria-live="polite") 
 
                 .popup__item
-                    input.popup__input(type="text" placeholder="Имя*" name="name" autocomplete="off" required)
+                    input.popup__input(type="text" placeholder="Имя*" name="name" autocomplete="off" minlength="3" required)
                     span.popup__line
 
                 .popup__item
-                    input.popup__input(type="text" placeholder="Телефон*" name="phone" minlength="9" autocomplete="off" required)
+                    input.popup__input#phoneInput(type="text" placeholder="Телефон*" name="phone" minlength="9" autocomplete="off" required)
                     span.popup__line
 
                 button.popup__button(type="submit" aria-label='Отправить форму') Отправить
