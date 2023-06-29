@@ -717,6 +717,16 @@ input {
   z-index: 1;
   background: url(../images/intro/intro-bg-1920.png) center/cover no-repeat
 }
+@media (max-width:1023px) {
+  .intro__bg {
+    background: url(../images/intro/intro-bg-768.png) center/cover no-repeat
+  }
+}
+@media (max-width:575px) {
+  .intro__bg {
+    background: url(../images/intro/intro-bg-360.png) center/cover no-repeat
+  }
+}
 .intro__wrapper {
   height: 100%;
   max-width: 686px;

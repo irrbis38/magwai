@@ -124,7 +124,11 @@ function createCard(post) {
   const card = document.createElement("DIV");
   card.classList.add("cards__item", "card");
   card.innerHTML = `
-  <div class="card__picture"><img src="./images/cards/card-${num}.png" alt=""/></div>
+  <div class="card__picture">
+  <picture class="picture object-fit-cover">
+    <source class="object-fit-cover" srcset="images//cards/card-${num}.webp, images//cards/card-${num}@2x.webp 2x" type="image/webp"/><img class="picture__img object-fit-cover" src="images//cards/card-${num}.png" srcset="images//cards/card-${num}.png, images//cards/card-7@2x.png 2x" alt=""/>
+  </picture>  
+  </div>
   <div class="card__descr">
     <div class="card__intro">
       <h3 class="card__heading">nature</h3>
