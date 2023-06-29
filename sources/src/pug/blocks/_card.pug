@@ -1,11 +1,11 @@
 mixin card(cardName, imgUrl)
     .cards__item.card
         .card__picture
-            img(src='./images/cards/card-' + imgUrl + '.png' alt= cardName)
+            +picture('/cards/card-' + imgUrl, 'png', 'x2')
 
         .card__descr
             .card__intro
-                h3.card__heading= cardName
+                .card__heading= cardName
                 p.card__subheading How to increase your productivity with a Music
             p.card__text Sed ut perspiciatis unde omnis iste natus error sit voluptatem santium doloremque laudantium, totam rem sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolo…
 

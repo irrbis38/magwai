@@ -35,6 +35,14 @@
   bottom: 0;
   z-index: 1;
   background: url("../images/intro/intro-bg-1920.png") center / cover no-repeat;
+
+  @include sm {
+    background: url("../images/intro/intro-bg-768.png") center / cover no-repeat;
+  }
+
+  @include xxs {
+    background: url("../images/intro/intro-bg-360.png") center / cover no-repeat;
+  }
 }
 
 .intro__wrapper {
