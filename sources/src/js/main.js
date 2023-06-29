@@ -94,25 +94,23 @@ function addFixedClassToHeader() {
 const form = document.querySelector(".popup__form");
 const inputs = Array.from(document.querySelectorAll(".popup__input"));
 
+function addErrorMsg(input, msg) {
+  input.parentElement.nextElementSibling.classList.add("error");
+  const errorMessage = input.parentElement.previousElementSibling;
+  errorMessage.textContent = msg;
+  errorMessage.classList.add("active");
+}
+
 function showError(input) {
   if (input.name === "name") {
     if (input.validity.valueMissing) {
-      input.nextElementSibling.classList.add("error");
-      const errorMessage = input.previousElementSibling;
-      errorMessage.textContent = "Fill in the 'name' fild.";
-      errorMessage.classList.add("active");
+      addErrorMsg(input, "Fill in the 'name' fild.");
     } else if (input.validity.tooShort) {
-      input.nextElementSibling.classList.add("error");
-      const errorMessage = input.previousElementSibling;
-      errorMessage.textContent = `Name should be at least ${input.minLength} characters; you entered ${input.value.length}.`;
-      errorMessage.classList.add("active");
+      addErrorMsg(input, "Name should be at least 3 characters.");
     }
   } else if (input.name === "phone") {
     if (input.value.includes("_")) {
-      input.nextElementSibling.classList.add("error");
-      const errorMessage = input.previousElementSibling;
-      errorMessage.textContent = "Type correct phone number.";
-      errorMessage.classList.add("active");
+      addErrorMsg(input, "Type correct phone number.");
     }
   }
 }
@@ -155,18 +153,19 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
   // VALIDATION
 
+  function clearError(input) {
+    const errorMessage = input.parentElement.previousElementSibling;
+    errorMessage.textContent = "";
+    errorMessage.className = "popup__error";
+    input.parentElement.nextElementSibling.classList.remove("error");
+  }
+
   inputs.forEach((input) =>
     input.addEventListener("input", () => {
       if (input.name === "name" && input.validity.valid) {
-        const errorMessage = input.previousElementSibling;
-        errorMessage.textContent = "";
-        errorMessage.className = "popup__error";
-        input.nextElementSibling.classList.remove("error");
-      } else if (input.name === "phone" && !input.value.includes("_")) {
-        const errorMessage = input.previousElementSibling;
-        errorMessage.textContent = "";
-        errorMessage.className = "popup__error";
-        input.nextElementSibling.classList.remove("error");
+        clearError(input);
+      } else if (input.name === "phone" && input.value.includes("_")) {
+        clearError(input);
       } else {
         showError(input);
       }

@@ -1016,15 +1016,15 @@ input {
 @media (max-width:767px) {
   .popup__wrapper {
     width: 90vw;
-    padding: 45px 20px 30px
+    padding: 45px 20px
   }
 }
 @media (max-width:575px) {
   .popup__wrapper {
     width: 96vw;
     height: 80vh;
-    min-height: 500px;
-    max-height: 600px;
+    min-height: 400px;
+    max-height: 500px;
     padding: 45px 12px 20px
   }
 }
@@ -1081,6 +1081,11 @@ input {
 }
 .popup__item:nth-child(3) {
   margin-bottom: 50px
+}
+.popup__label {
+  font-size: 14px;
+  line-height: 150%;
+  color: var(--color_black)
 }
 .popup__input {
   display: block;
