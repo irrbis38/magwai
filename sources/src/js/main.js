@@ -266,4 +266,12 @@ document.addEventListener("DOMContentLoaded", function (event) {
   cardsMoreBtn.addEventListener("click", () => {
     loadMoreHandler();
   });
+
+  // start animations
+
+  function removeAnimate() {
+    body.classList.remove("animated");
+  }
+
+  setTimeout(removeAnimate, 100);
 });
